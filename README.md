@@ -9,6 +9,6 @@
 Encode/decode a character or phrase into 8-bit integer.
 Using Hexadecimal, decimal, ASCII and extra mix up for more confidentiality.
 
-## Deploy
-With firebase:
+## Deployment
+Firebase:
     [https://decoderjimena.web.app/](https://decoderjimena.web.app/)
