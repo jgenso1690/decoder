@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <h1>
+         Decoder
+      </h1>
+      <script src="bit.js"></script>
+   </head>
+
+   <body>
+      <form onsubmit="encodeString(event)">
+         Enter String: <br>
+         <input type="text" name="rawText" id="rawText">
+         <input type="submit" value="Submit">
+      </form>
+      <br><br>
+      <div>
+         <div>
+            Output:
+            <div id="decimal"></div>
+         </div>
+      </div>
+      <br><br><br>
+
+      <form onsubmit="decodeDecimal(event)">
+         Enter number:
+         <div id="numbers">
+            <input type="number" name="number1" id="number">
+            <br>
+         </div>
+         <br><br>
+         <button onclick="addMore(event)">
+            Add more
+         </button>
+         <br>
+         <input type="submit" value="Submit">       
+      </form>
+      <br>
+      <div>
+         <div>
+            Output:
+            <div id="text2"></div>
+         </div>
+      </div>
+
+      <br><br>
+      <button onclick="reLoad(event)">
+         Start Again
+      </button>
+
+      <script>
+        function encodeString(event)
+        {
+            let value = document.getElementById("rawText").value;
+           event.preventDefault();
+           let transform = input(value);
+           document.getElementById("decimal").innerHTML = transform;
+           event.preventDefault();
+        }
+
+        function decodeDecimal(event)
+        {
+           let vals = document.querySelectorAll("#number");
+           event.preventDefault();
+           if (vals.length > 1)
+           {
+              let result = [];
+              for (let i = 0; i < vals.length; i++)
+              {
+                 val = parseInt(vals[i].value);
+                 result.push(val);
+              }
+              let transform = input(result);
+              document.getElementById("text2").innerHTML = transform;
+              event.preventDefault();
+           }
+           else
+           {
+              vals = parseInt(vals[0].value);
+              let transform = input(vals);
+              document.getElementById("text2").innerHTML = transform;
+              event.preventDefault();
+           }
+           event.preventDefault();
+        }
+
+        function addMore(event)
+        {
+           let count = 2;
+           let newNum = document.createElement("INPUT");
+           newNum.setAttribute("name", `number${count}`);
+           newNum.setAttribute("id", "number");
+           let inputs = document.getElementById("numbers");
+           inputs.appendChild(newNum);
+           let br = document.createElement("br");
+           inputs.appendChild(br);
+           count++;
+           event.preventDefault();
+        }
+
+        function reLoad(event)
+        {
+           location.reload();
+        }
+      </script>
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+      
+      <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBMpzkoEchVN4buk0laT2_j1HHYfmWsS3Y",
+        authDomain: "decoderjimena.firebaseapp.com",
+        databaseURL: "https://decoderjimena.firebaseio.com",
+        projectId: "decoderjimena",
+        storageBucket: "decoderjimena.appspot.com",
+        messagingSenderId: "953780380129",
+        appId: "1:953780380129:web:a662dd4971ee6f3f9932a0",
+        measurementId: "G-FCGT9324EX"
+      };
+     // Initialize Firebase
+     firebase.initializeApp(firebaseConfig);
+     firebase.analytics();
+     </script>
+   </body>
+</html>
