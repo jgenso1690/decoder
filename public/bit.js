@@ -240,7 +240,7 @@ class MyLib
    }
 }
 
-var artLogic = new MyLib()
+var decoder = new MyLib()
 
 const input = function(inp)
 {
@@ -253,7 +253,7 @@ const input = function(inp)
          groups.push(newstr);
       }
       let result = [];
-      groups.forEach(ele => result.push(artLogic.encode(ele)));
+      groups.forEach(ele => result.push(decoder.encode(ele)));
       return result
    }
    else
@@ -261,11 +261,11 @@ const input = function(inp)
       let newstr = "";
       if (typeof inp === 'number')
       {
-         return artLogic.decode(inp);
+         return decoder.decode(inp);
       }
       else if (typeof inp === 'object')
       {
-         inp.forEach(ele => newstr += artLogic.decode(ele));
+         inp.forEach(ele => newstr += decoder.decode(ele));
       } 
       return newstr;
     }
